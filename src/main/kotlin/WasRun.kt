@@ -1,15 +1,11 @@
-import kotlin.properties.Delegates
-
-class WasRun(private val name: String): TestCase(name) {
-    var wasRun by Delegates.notNull<Boolean>()
-    var wasSetUp = false
+class WasRun(name: String): TestCase(name) {
+    lateinit var log: String
 
     override fun setUp() {
-        wasRun = false
-        wasSetUp = true
+        log = "setUp "
     }
 
     fun testMethod() {
-        wasRun = true
+        log += "testMethod "
     }
 }

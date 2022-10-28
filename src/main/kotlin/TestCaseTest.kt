@@ -1,18 +1,10 @@
 
-class TestCaseTest(private val name: String): TestCase(name) {
+class TestCaseTest(name: String): TestCase(name) {
     private lateinit var test: WasRun
 
-    override fun setUp() {
+    fun testTemplateMethod() {
         test = WasRun("testMethod")
-    }
-    fun testRunning() {
         test.run()
-        assert(test.wasRun)
-    }
-
-    fun testSetUp() {
-        assert(!test.wasSetUp)
-        test.run()
-        assert(test.wasSetUp)
+        assert("setUp testMethod " == test.log)
     }
 }
