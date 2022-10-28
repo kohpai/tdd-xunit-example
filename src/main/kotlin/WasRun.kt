@@ -12,4 +12,8 @@ class WasRun(name: String): TestCase(name) {
     fun testMethod() {
         log += "testMethod "
     }
+
+    fun testBrokenMethod() {
+        throw Exception("broken method")
+    }
 }

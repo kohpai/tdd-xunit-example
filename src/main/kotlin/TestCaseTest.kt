@@ -12,4 +12,17 @@ class TestCaseTest(name: String): TestCase(name) {
         val result = test.run()
         assert("1 run, 0 failed" == result.summary())
     }
+
+    fun testFailedResultFormatting() {
+        val result = TestResult()
+        result.testStarted()
+        result.testFailed()
+        assert("1 run, 1 failed" == result.summary())
+    }
+
+    fun testFailedResult() {
+        val test = WasRun("testBrokenMethod")
+        val result = test.run()
+        assert("1 run, 1 failed" == result.summary())
+    }
 }
