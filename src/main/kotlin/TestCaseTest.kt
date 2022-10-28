@@ -1,10 +1,15 @@
 
 class TestCaseTest(name: String): TestCase(name) {
-    private lateinit var test: WasRun
 
     fun testTemplateMethod() {
-        test = WasRun("testMethod")
+        val test = WasRun("testMethod")
         test.run()
         assert("setUp testMethod tearDown " == test.log)
+    }
+
+    fun testResult() {
+        val test = WasRun("testMethod")
+        val result = test.run()
+        assert("1 run, 0 failed" == result.summary())
     }
 }
