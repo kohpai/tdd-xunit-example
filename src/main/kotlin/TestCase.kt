@@ -3,8 +3,7 @@ open class TestCase(private val name: String) {
 
     open fun tearDown() {}
 
-    fun run(): TestResult {
-        val result = TestResult()
+    fun run(result: TestResult) {
         result.testStarted()
         setUp()
         val method = this::class.members.find { it.name == name }!!
@@ -14,6 +13,5 @@ open class TestCase(private val name: String) {
             result.testFailed()
         }
         tearDown()
-        return result
     }
 }
